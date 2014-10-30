@@ -16,4 +16,4 @@ main = xmonad $ defaultConfig
 	    , modMask = mod4Mask}
 	    `additionalKeysP`
 	    [ ("M-e", spawn "emacs")
-	    , ("M-f", spawn "conkeror")]	
+	    , ("M-f", spawn "firefox")]	
