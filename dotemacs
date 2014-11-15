@@ -31,4 +31,11 @@
 (require 'tramp)
 
 (require 'ido)
+(setq ido-enable-flex-matching t)
+(setq ido-everywhere t)
 (ido-mode t)
+
+;; Custom modes
+(add-to-list 'load-path "~/.emacs.d/modes/")
+(autoload 'alloy-mode "alloy-mode" "Mode for Alloy" t)
+(setq auto-mode-alist (cons '("\\.als$" . alloy-mode) auto-mode-alist))
