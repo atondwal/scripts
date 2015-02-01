@@ -39,3 +39,16 @@
 (add-to-list 'load-path "~/.emacs.d/modes/")
 (autoload 'alloy-mode "alloy-mode" "Mode for Alloy" t)
 (setq auto-mode-alist (cons '("\\.als$" . alloy-mode) auto-mode-alist))
+(autoload 'dafny-mode "dafny-mode" "Mode for Dafny" t)
+(setq auto-mode-alist (cons '("\\.dfy$" . dafny-mode) auto-mode-alist))
+
+(require 'cl)
+(setq auto-mode-alist (cons '("\\.\\(pde\\|ino\\|inoc\\)$" . arduino-mode) auto-mode-alist))
+(autoload 'arduino-mode "arduino-mode" "Mode for Arduino" t)
+
+;; Proof general
+(load-file "/usr/share/emacs/site-lisp/ProofGeneral/generic/proof-site.el")
+
+(setq org-log-done 'time)
+(setq org-html-postamble nil)
+(setq org-html-head "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/bootstrap.min.css\" /> \n <link rel=\"stylesheet\" type=\"text/css\" href=\"mainstyle.css\" />")
