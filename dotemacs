@@ -52,3 +52,15 @@
 (setq org-log-done 'time)
 (setq org-html-postamble nil)
 (setq org-html-head "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/bootstrap.min.css\" /> \n <link rel=\"stylesheet\" type=\"text/css\" href=\"mainstyle.css\" />")
+
+;; General emacs stuff
+(require 'wgrep)
+
+(setf inhibit-startup-screen t
+      inhibit-startup-message t
+      inhibit-startup-echo-area-message t)
+(setf initial-buffer-choice "~/")
+
+(require 'dired-x)
+(setq-default dired-omit-files-p t)
+(setq dired-omit-files (concat dired-omit-files "\\|^\\..+$"))
