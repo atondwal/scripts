@@ -60,7 +60,7 @@
 (setf inhibit-startup-screen t
       inhibit-startup-message t
       inhibit-startup-echo-area-message t)
-(setf initial-buffer-choice "~/")
+(setf initial-buffer-choice default-directory)
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 
