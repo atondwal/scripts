@@ -9,7 +9,7 @@ main = do
      xmproc <- spawnPipe "/usr/bin/xmobar"
      xmonad $ defaultConfig
      	    	    { borderWidth = 2
-	    	    , terminal 	= "urxvt"
+	    	    , terminal 	= "emacs -Q --load ~/.emacs.d/shell-init.el"
 		    , normalBorderColor = "#cccccc"
 		    , focusedBorderColor = "#112255"
 		    , focusFollowsMouse = False
