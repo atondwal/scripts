@@ -19,11 +19,38 @@
 	     (load-theme 'zenburn t)
 	     :ensure t)
 
-(use-package geiser :ensure t)
-(use-package quack :ensure t)
-
-  :ensure t)
+(use-package racket-mode
+  :mode ("\\.rkt\\'" . racket-mode)
+  :interpreter ("racket" . racket-mode)
   :config
+  (define-abbrev-table 'racket-mode-abbrev-table
+    '(("lambda" "λ" nil 1)))
+  (setq default-abbrev-mode t)
+
+  ;; Special indentation for common functions
+  (defun racket-add-keywords (face-name keyword-rules)
+    (let* ((keyword-list (mapcar #'(lambda (x)
+				     (symbol-name (cdr x)))
+				 keyword-rules))
+	   (keyword-regexp (concat "(\\("
+				   (regexp-opt keyword-list)
+				   "\\)[ \n]")))
+      (font-lock-add-keywords 'racket-mode
+			      `((,keyword-regexp 1  ',face-name))))
+    (mapc #'(lambda (x)
+	      (put (cdr x)
+		   'racket-indent-function
+		   (car x)))
+	  keyword-rules))
+
+  (racket-add-keywords
+   'font-lock-keyword-face
+   '((1 . for/append)))
+  
+  :ensure t)
+(use-package geiser
+  :config
+  (add-hook 'racket-mode-hook (lambda () (geiser-mode t)))
   :ensure t)
 
 (use-package magit
@@ -42,10 +69,6 @@
   (setq password-cache-expiry 120))
 
 (use-package wgrep :ensure t)
-;; Lisp Stuff
-(define-abbrev-table 'scheme-mode-abbrev-table
-  '(("lambda" "λ" nil 1)))
-(setq default-abbrev-mode t)
 (use-package dired-x)
 
 ;; Preferences
