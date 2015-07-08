@@ -23,7 +23,6 @@
 (use-package quack :ensure t)
 
   :ensure t)
-(use-package tramp :ensure t)
 (use-package ido
   :config
   (setq ido-enable-flex-matching t)
@@ -34,6 +33,17 @@
 (use-package magit
   :bind ("C-x m" . magit-status)
   :ensure t)
+(use-package tramp
+  :ensure t
+  :config
+  (setq tramp-debug-buffer t)
+  (setq tramp-default-method "ssh"))
+(use-package em-tramp
+  :config
+  (setq eshell-prefer-lisp-functions t)
+  (setq eshell-prefer-lisp-variables t)
+  (setq password-cache t)
+  (setq password-cache-expiry 120))
 
 (use-package wgrep :ensure t)
 ;; Lisp Stuff
