@@ -50,9 +50,9 @@
 (define-abbrev-table 'scheme-mode-abbrev-table
   '(("lambda" "λ" nil 1)))
 (setq default-abbrev-mode t)
+(use-package dired-x)
 
 ;; Preferences
-(require 'dired-x)
 (setf inhibit-startup-screen t
       inhibit-startup-message t
       inhibit-startup-echo-area-message t)
