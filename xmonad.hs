@@ -9,7 +9,8 @@ main = do
      xmproc <- spawnPipe "/usr/bin/xmobar"
      xmonad $ defaultConfig
      	    	    { borderWidth = 2
-	    	    , terminal 	= "emacs -Q --load ~/.emacs.d/shell-init.el"
+	    	    , terminal 	=
+		    "emacsclient -c -e '(load \"~/.emacs.d/shell-init.el\")'"
 		    , normalBorderColor = "#cccccc"
 		    , focusedBorderColor = "#112255"
 		    , focusFollowsMouse = False
@@ -22,5 +23,5 @@ main = do
 		      }
 		    , modMask = mod4Mask}
 		    `additionalKeysP`
-		    [ ("M-e", spawn "emacs")
+		    [ ("M-e", spawn "emacsclient -c")
 		    , ("M-f", spawn "firefox")]
