@@ -33,12 +33,6 @@
   (ido-mode t)
   :ensure t)
 
-;; (use-package alloy-mode
-;;   :mode "\\.als$"
-;;   :ensure t)
-;; (use-package dafny-mode
-;;   :mode "\\.dfy$"
-;;   :ensure t)
 
 (use-package wgrep :ensure t)
 ;; Lisp Stuff
