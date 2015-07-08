@@ -23,11 +23,7 @@
 (use-package quack :ensure t)
 
   :ensure t)
-(use-package ido
   :config
-  (setq ido-enable-flex-matching t)
-  (setq ido-everywhere t)
-  (ido-mode t)
   :ensure t)
 
 (use-package magit
@@ -62,3 +58,10 @@
 
 (setq-default dired-omit-files-p t)
 (setq dired-omit-files (concat dired-omit-files "\\|^\\..+$"))
+
+(use-package ido
+  :config
+  (setq ido-enable-flex-matching t)
+  (setq ido-everywhere t)
+  (ido-mode t)
+  :ensure t)
