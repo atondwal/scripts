@@ -10,7 +10,7 @@ main = do
      xmonad $ defaultConfig
      	    	    { borderWidth = 2
 	    	    , terminal 	=
-		    "emacsclient -c -e '(load \"~/.emacs.d/shell-init.el\")'"
+		    "emacsclient -c -e '(eshell)'"
 		    , normalBorderColor = "#cccccc"
 		    , focusedBorderColor = "#112255"
 		    , focusFollowsMouse = False

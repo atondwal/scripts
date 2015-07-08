@@ -56,6 +56,9 @@
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 
+(set-frame-parameter (selected-frame) 'alpha '(90 75))
+(add-to-list 'default-frame-alist '(alpha 90 75))
+
 (setq-default dired-omit-files-p t)
 (setq dired-omit-files (concat dired-omit-files "\\|^\\..+$"))
 
@@ -65,3 +68,10 @@
   (setq ido-everywhere t)
   (ido-mode t)
   :ensure t)
+
+;; Shell stuff
+(defun split-shell ()
+  (split-window)
+  (eshell 'a))
+(defun fresh-shell ()
+  (eshell 'a))
