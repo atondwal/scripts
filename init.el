@@ -22,8 +22,6 @@
 (use-package geiser :ensure t)
 (use-package quack :ensure t)
 
-(use-package magit
-  :bind ("C-x m" . magit-status)
   :ensure t)
 (use-package tramp :ensure t)
 (use-package ido
@@ -33,6 +31,9 @@
   (ido-mode t)
   :ensure t)
 
+(use-package magit
+  :bind ("C-x m" . magit-status)
+  :ensure t)
 
 (use-package wgrep :ensure t)
 ;; Lisp Stuff
