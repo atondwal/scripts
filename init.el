@@ -71,13 +71,15 @@
 (use-package wgrep :ensure t)
 (use-package dired-x)
 
+(use-package better-defaults :ensure t)
+
+(use-package idle-highlight-mode :ensure t)
+
 ;; Preferences
 (setf inhibit-startup-screen t
       inhibit-startup-message t
       inhibit-startup-echo-area-message t)
 (setf initial-buffer-choice default-directory)
-(tool-bar-mode -1)
-(menu-bar-mode -1)
 
 (set-frame-parameter (selected-frame) 'alpha '(90 75))
 (add-to-list 'default-frame-alist '(alpha 90 75))
@@ -85,11 +87,23 @@
 (setq-default dired-omit-files-p t)
 (setq dired-omit-files (concat dired-omit-files "\\|^\\..+$"))
 
+;; Ido stuff
 (use-package ido
   :config
   (setq ido-enable-flex-matching t)
   (setq ido-everywhere t)
   (ido-mode t)
+  :ensure t)
+(use-package ido-ubiquitous
+  :config
+  (ido-ubiquitous-mode t)
+  :ensure t)
+(use-package smex
+  :config
+  (smex-initialize)
+  :bind (("M-x" . smex)
+         ("M-X" . smex-major-mode-commands)
+         ("C-c C-c M-x" . execute-extended-command))
   :ensure t)
 
 ;; Shell stuff
