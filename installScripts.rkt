@@ -1,4 +1,4 @@
-#!/bin/racket
+#!/usr/bin/env racket
 #lang racket
 
 (when (file-exists? "~/.emacs")
@@ -8,9 +8,14 @@
 (define (eh path-string)
   (string-replace path-string "~/"
                   (path->string (find-system-path 'home-dir))))
+(define (ade path-string)
+  (string-append
+   (path->string (current-directory))
+   path-string))
 (map (λ (pair)
        (match-let* ([`(,from ,to) pair]
-                   [to (eh to)])
+                    [to (eh to)]
+                    [from (ade from)])
          (when (file-exists? to)
            (rename-file-or-directory to (format "~a~~" to) #t))
          (softlink-file from to)))
