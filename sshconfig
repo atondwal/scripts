@@ -1,0 +1,13 @@
+Host server
+     HostName alex.server.remote
+     Port 44
+     User alex
+
+Host serverLocal
+     Hostname alex.server.local
+     Port 22
+     User alex
+
+Host uwplse.org
+     Hostname uwplse.org
+     User astarc
