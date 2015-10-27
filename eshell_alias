@@ -1,0 +1,12 @@
+alias emacs find-file
+alias lm lab-monitor
+alias vol-down amixer -q sset Master 10%-
+alias vol-up amixer -q sset Master 10%+
+alias lab-monitor xrandr --output HDMI1 --off && xrandr --output HDMI1 --mode 1920x1200 && setxkbmap -option && setxkbmap -option caps:super && sh ~/.fehbg
+alias monitor-off xrandr --output HDMI1 --off && setxkbmap -option && setxkbmap -option ctrl:nocaps && sh ~/.fehbg
+alias connect cd /$1:~/
+alias disconnect cd
+alias newshell emacsclient -c -e '(load "~/.emacs.d/shell-init.el")'
+alias net-test ping www.google.com
+alias mo monitor-off
+alias sudo eshell/sudo $*
