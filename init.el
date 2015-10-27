@@ -48,7 +48,8 @@
   (racket-add-keywords
    'font-lock-keyword-face
    '((1 . for/append)
-     (1 . for/mutable-set)))
+     (1 . for/mutable-set)
+     (1 . herbie-test)))
   
   :ensure t)
 (use-package geiser
