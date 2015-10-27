@@ -78,18 +78,26 @@
 (use-package better-defaults :ensure t)
 
 (use-package idle-highlight-mode :ensure t)
+(use-package haskell-mode
+  :ensure t
+  :config
+  (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation))
 
 ;; Preferences
 (setf inhibit-startup-screen t
       inhibit-startup-message t
       inhibit-startup-echo-area-message t)
 (setf initial-buffer-choice default-directory)
+(use-package markdown-mode+
+  :ensure t)
 
 (set-frame-parameter (selected-frame) 'alpha '(90 75))
 (add-to-list 'default-frame-alist '(alpha 90 75))
 
 (setq-default dired-omit-files-p t)
 (setq dired-omit-files (concat dired-omit-files "\\|^\\..+$"))
+(use-package rust-mode
+  :ensure t)
 
 ;; Ido stuff
 (use-package ido
