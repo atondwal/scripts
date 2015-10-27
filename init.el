@@ -83,19 +83,15 @@
   :config
   (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation))
 
-;; Preferences
-(setf inhibit-startup-screen t
-      inhibit-startup-message t
-      inhibit-startup-echo-area-message t)
-(setf initial-buffer-choice default-directory)
 (use-package markdown-mode+
   :ensure t)
 
-(set-frame-parameter (selected-frame) 'alpha '(90 75))
-(add-to-list 'default-frame-alist '(alpha 90 75))
+(use-package openwith
+  :ensure t
+  :config
+  (openwith-mode t)
+  (setq openwith-associations '(("\\.pdf\\'" "evince" (file)))))
 
-(setq-default dired-omit-files-p t)
-(setq dired-omit-files (concat dired-omit-files "\\|^\\..+$"))
 (use-package rust-mode
   :ensure t)
 
@@ -117,6 +113,21 @@
          ("M-X" . smex-major-mode-commands)
          ("C-c C-c M-x" . execute-extended-command))
   :ensure t)
+
+;; Preferences
+(setf inhibit-startup-screen t
+      inhibit-startup-message t
+      inhibit-startup-echo-area-message t)
+(setf initial-buffer-choice default-directory)
+
+(set-frame-parameter (selected-frame) 'alpha '(90 75))
+(add-to-list 'default-frame-alist '(alpha 90 75))
+
+(setq-default dired-omit-files-p t)
+(setq dired-omit-files (concat dired-omit-files "\\|^\\..+$"))
+(global-set-key (kbd "C-c C-a") 'recompile)
+(require 'tex-mode)
+(add-hook 'latex-mode-hook 'flyspell-mode)
 
 ;; Shell stuff
 (defun split-shell ()
