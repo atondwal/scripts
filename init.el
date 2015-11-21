@@ -1,7 +1,6 @@
 ;; Set up package manager
 (eval-when-compile
-  (add-to-list 'load-path "~/.emacs.d/elpa/use-package/")
-  (add-to-list 'load-path "~/.emacs.d/elpa/bind-key/")
+  (package-initialize)
   (require 'bind-key)
   (require 'use-package))
 
