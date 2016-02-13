@@ -35,4 +35,5 @@ main = do
 		    , modMask = mod4Mask}
 		    `additionalKeysP`
 		    [ ("M-e", spawn "emacsclient -c")
-		    , ("M-f", spawn "firefox")]
+		    , ("M-f", spawn "firefox")
+                    , ("M-s", sendMessage ToggleStruts)]
