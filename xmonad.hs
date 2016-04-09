@@ -12,9 +12,10 @@ myManageHook = composeAll . concat $
                [ [ className =? c --> doFloat | c <- cFloats ]
                , [ title =? t --> doFloat | t <- tFloats ]
                , [ className =? "Evince" -->doShift "read"]
-               , [ className =? "HipChat" -->doShift "chat"]]
-  where cFloats = ["NES"]
-        tFloats = ["Firefox Preferences", "Downloads", "Add-ons", "Rename", "Create" ]
+               , [ className =? "HipChat" -->doShift "chat"]
+               , [ className =? "Slack" -->doShift "chat"]]
+  where cFloats = ["NES", "tilda"]
+        tFloats = ["Firefox Preferences", "Downloads", "Add-ons", "Rename", "Create", "tilda" ]
 
 main = do
      xmproc <- spawnPipe "/usr/bin/xmobar"
