@@ -113,6 +113,14 @@
          ("C-c C-c M-x" . execute-extended-command))
   :ensure t)
 
+;; Dafny Stuff
+(setq flycheck-dafny-executable
+      "/home/alex/builds/uw-dafny/dafny")
+(setq flycheck-boogie-executable
+      "/home/alex/builds/uw-dafny/dafny-server")
+(setq flycheck-z3-smt2-executable
+      "/usr/bin/z3")
+
 ;; Preferences
 (setf inhibit-startup-screen t
       inhibit-startup-message t
