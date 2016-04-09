@@ -1,4 +1,4 @@
-alias emacs find-file
+alias dafny /home/alex/builds/uw-dafny/dafny $*
 alias lm lab-monitor
 alias vol-down amixer -q sset Master 10%-
 alias vol-up amixer -q sset Master 10%+
@@ -10,3 +10,4 @@ alias newshell emacsclient -c -e '(load "~/.emacs.d/shell-init.el")'
 alias net-test ping www.google.com
 alias mo monitor-off
 alias sudo eshell/sudo $*
+alias emacs find-file-other-window nil
