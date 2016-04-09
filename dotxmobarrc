@@ -6,7 +6,7 @@ Config { font = "xft:Terminus:size=10:bold:antialias=true"
   	     , Run Network "eno1" ["-L","0","-H","70","--normal","green","--high","red"] 10   
 	     , Run Memory ["-t","Mem: <usedratio>%"] 10
 	     , Run Date "%a %b %_d %l:%M" "date" 10  
-	     , Run Com "/home/alex/scripts/volume.sh" [] "volume" 10  
+	     , Run Com "/home/alex/scripts/volume.sh" [] "volume" 10
 	     , Run StdinReader  
 	     ]  
 , sepChar = "%"  
