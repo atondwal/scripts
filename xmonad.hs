@@ -18,9 +18,9 @@ myManageHook = composeAll . concat $
 
 main = do
      xmproc <- spawnPipe "/usr/bin/xmobar"
-     xmonad $ defaultConfig
-     	    	    { borderWidth = 2
-	    	    , terminal 	= "emacsclient -c -e '(eshell)'"
+     xmonad $ def
+                    { borderWidth = 2
+                    , terminal  = "emacsclient -c -e '(eshell)'"
                     , workspaces = myWorkspaces
 		    , normalBorderColor = "#cccccc"
 		    , focusedBorderColor = "#112255"
