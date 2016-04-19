@@ -94,6 +94,9 @@
 (use-package rust-mode
   :ensure t)
 
+(use-package unfill
+  :ensure t)
+
 ;; Ido stuff
 (use-package ido
   :config
