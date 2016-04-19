@@ -4,10 +4,14 @@ Host server
      User alex
 
 Host serverLocal
-     Hostname alex.server.local
+     Hostname 192.168.0.2
      Port 22
      User alex
 
 Host uwplse.org
      Hostname uwplse.org
      User astarc
+
+Host warfa
+     Hostname warfa.cs.washington.edu
+     User astar
