@@ -15,3 +15,7 @@ Host uwplse.org
 Host warfa
      Hostname warfa.cs.washington.edu
      User astar
+
+Host benserver
+     Hostname ben.thegentlemenraptors.com
+     User alex

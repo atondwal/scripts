@@ -59,6 +59,13 @@
 (use-package magit
   :bind ("C-x m" . magit-status)
   :ensure t)
+
+(use-package evil-magit
+  :ensure t
+  :config
+  (evil-magit-define-key evil-magit-state 'magit-mode-map "c" nil)
+  (evil-magit-define-key evil-magit-state 'magit-mode-map "C" magit-commit-popup)
+  )
 (use-package tramp
   :ensure t
   :config
@@ -138,6 +145,17 @@
 (global-set-key (kbd "C-c C-a") 'recompile)
 (require 'tex-mode)
 (add-hook 'latex-mode-hook 'flyspell-mode)
+(add-to-list 'load-path "~/.emacs.d/site-lisp/evil")
+(use-package evil
+  :config
+  (progn
+    (evil-mode 1)
+    (define-key evil-ex-map "e " 'ido-find-file)
+    (define-key evil-ex-map "b " 'ido-switch-buffer)
+    (define-key evil-normal-state-map "c" nil)
+    (define-key evil-motion-state-map "cu" 'universal-argument)
+    (define-key key-translation-map (kbd "cx") (kbd "C-x"))
+    ))
 
 ;; Shell stuff
 (defun split-shell ()
