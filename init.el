@@ -63,9 +63,9 @@
 (use-package evil-magit
   :ensure t
   :config
-  (evil-magit-define-key evil-magit-state 'magit-mode-map "c" nil)
-  (evil-magit-define-key evil-magit-state 'magit-mode-map "C" magit-commit-popup)
-  )
+  (define-key magit-mode-map "c" nil)
+  (define-key magit-mode-map "C" magit-commit-popup))
+
 (use-package tramp
   :ensure t
   :config
