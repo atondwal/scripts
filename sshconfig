@@ -19,3 +19,7 @@ Host warfa
 Host benserver
      Hostname ben.thegentlemenraptors.com
      User alex
+
+Host goto
+     HostName goto.ucsd.edu
+     User alexss
