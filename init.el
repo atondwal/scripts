@@ -156,7 +156,24 @@
     (define-key evil-normal-state-map "c" nil)
     (define-key evil-motion-state-map "cu" 'universal-argument)
     (define-key key-translation-map (kbd "cx") (kbd "C-x"))
-    ))
+    (define-key evil-normal-state-map (kbd "M-.") nil)
+   ))
+
+(use-package ggtags
+  :ensure t
+  :config
+  (add-hook 'c-mode-common-hook
+            (lambda ()
+              (when (derived-mode-p 'c-mode)
+                (ggtags-mode 1))))
+  (define-key ggtags-mode-map (kbd "C-x g s") 'ggtags-find-other-symbol)
+  (define-key ggtags-mode-map (kbd "C-x g h") 'ggtags-view-tag-history)
+  (define-key ggtags-mode-map (kbd "C-x g r") 'ggtags-find-reference)
+  (define-key ggtags-mode-map (kbd "C-x g f") 'ggtags-find-file)
+  (define-key ggtags-mode-map (kbd "C-x g c") 'ggtags-create-tags)
+  (define-key ggtags-mode-map (kbd "C-x g u") 'ggtags-update-tags)
+
+  (define-key ggtags-mode-map (kbd "M-,") 'pop-tag-mark))
 
 ;; Shell stuff
 (defun split-shell ()
