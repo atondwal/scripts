@@ -175,6 +175,22 @@
 
   (define-key ggtags-mode-map (kbd "M-,") 'pop-tag-mark))
 
+(use-package clean-aindent-mode
+  :ensure t
+  :config
+  (clean-aindent-mode 1))
+
+(use-package dtrt-indent
+  :ensure t
+  :config
+  (dtrt-indent-mode 1)
+  (setq dtrt-indent-verbosity 0))
+
+(use-package ws-butler
+  :ensure t
+  :config
+  (ws-butler-mode 1))
+
 ;; Shell stuff
 (defun split-shell ()
   (split-window)
