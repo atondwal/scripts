@@ -78,12 +78,6 @@
   :config
   (setq tramp-debug-buffer t)
   (setq tramp-default-method "ssh"))
-(use-package em-tramp
-  :config
-  (setq eshell-prefer-lisp-functions t)
-  (setq eshell-prefer-lisp-variables t)
-  (setq password-cache t)
-  (setq password-cache-expiry 120))
 
 (use-package wgrep :ensure t)
 (use-package dired-x)
