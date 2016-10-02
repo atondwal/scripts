@@ -56,9 +56,9 @@
   (add-hook 'racket-mode-hook (lambda () (geiser-mode t)))
   :ensure t)
 
+(add-to-list 'load-path "~/.emacs.d/site-lisp/magit/lisp")
 (use-package magit
-  :bind ("C-x m" . magit-status)
-  :ensure t)
+  :bind (("C-x m" . magit-status)))
 
 (use-package evil-magit
   :ensure t
