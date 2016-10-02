@@ -5,6 +5,7 @@ import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig
 import XMonad.Layout.PerWorkspace
 import XMonad.Layout.SimplestFloat
+import XMonad.Layout.NoBorders
 import System.IO
 
 myWorkspaces = ["edit", "web", "term", "read", "chat"] ++ map show [6..9]
@@ -27,7 +28,7 @@ main = do
 		    , focusedBorderColor = "#112255"
 		    , focusFollowsMouse = False
 		    , manageHook = myManageHook <+> manageDocks <+> manageHook defaultConfig
-		    , layoutHook = avoidStruts $ layoutHook defaultConfig
+		    , layoutHook = avoidStruts $ smartBorders $ layoutHook defaultConfig
 		    , logHook = dynamicLogWithPP xmobarPP
 		      { ppOutput = hPutStrLn xmproc
 		      ,	ppTitle = xmobarColor "green" "" . shorten 50
