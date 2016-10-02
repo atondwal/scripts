@@ -64,7 +64,14 @@
   :ensure t
   :config
   (define-key magit-mode-map "c" nil)
-  (define-key magit-mode-map "C" magit-commit-popup))
+  (define-key magit-file-section-map "C" nil)
+  (define-key magit-hunk-section-map "C" nil)
+  (define-key magit-mode-map "C" 'magit-commit-popup))
+
+(with-eval-after-load 'info
+  (info-initialize)
+  (add-to-list 'Info-directory-list
+               "~/.emacs.d/site-lisp/magit/Documentation/"))
 
 (use-package tramp
   :ensure t
