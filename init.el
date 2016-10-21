@@ -151,13 +151,25 @@
   :config
   (progn
     (evil-mode 1)
+    (define-prefix-command 'meta-map)
+    (define-key evil-normal-state-map (kbd "m") 'meta-map)
+    (define-key meta-map (kbd "x") 'smex)
+    (define-key meta-map (kbd "q") 'fill-paragraph)
     (define-key evil-ex-map "e " 'ido-find-file)
+    (define-key evil-ex-map "E " 'ido-find-file)
     (define-key evil-ex-map "b " 'ido-switch-buffer)
+    (define-key evil-ex-map "B " 'ido-switch-buffer)
     (define-key evil-normal-state-map "c" nil)
     (define-key evil-motion-state-map "cu" 'universal-argument)
     (define-key key-translation-map (kbd "cx") (kbd "C-x"))
     (define-key evil-normal-state-map (kbd "M-.") nil)
    ))
+(use-package key-chord
+  :ensure t
+  :config
+  (setq key-chord-two-keys-delay 0.5)
+  (key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
+  (key-chord-mode 1))
 
 (use-package ggtags
   :ensure t

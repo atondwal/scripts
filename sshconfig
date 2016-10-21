@@ -1,11 +1,6 @@
 Host server
-     HostName alex.server.remote
+     HostName alexsanchezstern.com
      Port 44
-     User alex
-
-Host serverLocal
-     Hostname 192.168.0.2
-     Port 22
      User alex
 
 Host uwplse.org
@@ -23,3 +18,8 @@ Host benserver
 Host goto
      HostName goto.ucsd.edu
      User alexss
+
+Host ec2-large
+     HostName ec2-52-32-123-247.us-west-2.compute.amazonaws.com
+     User ubuntu
+     IdentityFile ~/herbie-all/herbgrind/herbgrind-test.pem

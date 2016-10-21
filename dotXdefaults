@@ -1,6 +1,9 @@
 URxvt.depth: 32
 URxvt*background: rgba:1111/1111/1111/aaaa
 URxvt*foreground: rgba:ffff/ffff/ffff/ffff
+URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+URxvt.iso14755: False
+URxvt.perl-ext-common: default,clipboard
 ! URxvt*termName:                       string
 ! URxvt*geometry:                       geometry
 ! URxvt*chdir:                          string
@@ -121,7 +124,6 @@ URxvt*foreground: rgba:ffff/ffff/ffff/ffff
 ! URxvt*secondaryScroll:                boolean
 ! URxvt*perl-lib:                       string
 ! URxvt*perl-eval:                      perl-eval
-! URxvt*perl-ext-common:                string
 ! URxvt*perl-ext:                       string
 ! URxvt*iso14755:                       boolean
 ! URxvt*iso14755_52:                    boolean
