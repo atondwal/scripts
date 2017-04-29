@@ -5,8 +5,7 @@
   (require 'use-package))
 
 
-(use-package package
-  :config
+(use-package package :config
   (add-to-list 'package-archives
 	       '("melpa" . "http://melpa.milkbox.net/packages/") t)
   (add-to-list 'package-archives
@@ -60,13 +59,40 @@
 (use-package magit
   :bind (("C-x m" . magit-status)))
 
+(add-to-list 'load-path "~/.emacs.d/site-lisp/")
+(require 'mode-line-color)
+(require 'evil-mode-line)
+(require 'linum+)
+(require 'relative-linum)
+(require 'evil-relative-linum)
+(require 'evil-little-word)
+(define-key evil-normal-state-map (kbd "w")
+  'evil-forward-little-word-begin)
+(define-key evil-normal-state-map (kbd "b")
+  'evil-backward-little-word-begin)
+(define-key evil-operator-state-map (kbd "w")
+  'evil-forward-little-word-begin)
+(define-key evil-operator-state-map (kbd "b")
+  'evil-backward-little-word-begin)
+(define-key evil-visual-state-map (kbd "w")
+  'evil-forward-little-word-begin)
+(define-key evil-visual-state-map (kbd "b")
+  'evil-backward-little-word-begin)
+(define-key evil-visual-state-map (kbd "i w")
+  'evil-inner-little-word)
+
 (use-package evil-magit
   :ensure t
   :config
   (define-key magit-mode-map "c" nil)
   (define-key magit-file-section-map "C" nil)
   (define-key magit-hunk-section-map "C" nil)
-  (define-key magit-mode-map "C" 'magit-commit-popup))
+  (define-key magit-mode-map "C" 'magit-commit-popup)
+  (define-key evil-ex-map "em " 'magit-find-file)
+  (define-key evil-ex-map "Em " 'magit-find-file)
+  (define-key evil-ex-map "EM " 'magit-find-file)
+  (setq magit-completing-read-function 'magit-ido-completing-read)
+  )
 
 (with-eval-after-load 'info
   (info-initialize)
@@ -132,6 +158,15 @@
 (setq flycheck-z3-smt2-executable
       "/usr/bin/z3")
 
+;; Proof general
+(load-file "/home/alex/.emacs.d/site-lisp/ProofGeneral/generic/proof-site.el")
+
+;; TeX stuff
+(require 'tex-mode)
+(add-hook 'latex-mode-hook 'flyspell-mode)
+(setq ispell-program-name "aspell")
+(setq ispell-list-command "--list")
+
 ;; Preferences
 (setf inhibit-startup-screen t
       inhibit-startup-message t
@@ -144,8 +179,8 @@
 (setq-default dired-omit-files-p t)
 (setq dired-omit-files (concat dired-omit-files "\\|^\\..+$"))
 (global-set-key (kbd "C-c C-a") 'recompile)
-(require 'tex-mode)
-(add-hook 'latex-mode-hook 'flyspell-mode)
+(set 'temporary-file-directory "/tmp")
+
 (add-to-list 'load-path "~/.emacs.d/site-lisp/evil")
 (use-package evil
   :config
@@ -163,12 +198,12 @@
     (define-key evil-motion-state-map "cu" 'universal-argument)
     (define-key key-translation-map (kbd "cx") (kbd "C-x"))
     (define-key evil-normal-state-map (kbd "M-.") nil)
-   ))
+    ))
 (use-package key-chord
   :ensure t
   :config
-  (setq key-chord-two-keys-delay 0.5)
-  (key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
+  (setq key-chord-two-keys-delay 0.3)
+  (key-chord-define evil-insert-state-map "jk" 'evil-normal-state)
   (key-chord-mode 1))
 
 (use-package ggtags
@@ -203,9 +238,35 @@
   :config
   (ws-butler-mode 1))
 
+;; Lean mode!
+(setq lean-rootdir "~/builds-void/lean")
+(add-to-list 'load-path "~/builds-void/lean/src/emacs")
+(require 'lean-mode)
+
 ;; Shell stuff
 (defun split-shell ()
   (split-window)
   (eshell 'a))
 (defun fresh-shell ()
   (eshell 'a))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(coq-prog-name "coqtop")
+ '(coq-server-host "server")
+ '(coq-server-local-dpipe "/home/alex/.emacs.d/site-lisp/coq-server.el/dpipe")
+ '(coq-server-local-sftp-server "/usr/lib64/ssh/sftp-server")
+ '(magit-push-always-verify nil)
+ '(package-selected-packages
+   (quote
+    (unicode-fonts f key-chord ws-butler dtrt-indent clean-aindent-mode ggtags zenburn-theme wgrep use-package unfill smex smartparens rust-mode racket-mode paredit openwith markdown-mode+ magit-tramp ido-ubiquitous idle-highlight-mode haskell-mode goto-last-change geiser exec-path-from-shell evil-magit dash-functional company-coq boogie-friends better-defaults)))
+ '(send-mail-function (quote smtpmail-send-it)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+(exec-path-from-shell-initialize)
