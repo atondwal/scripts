@@ -3,13 +3,23 @@ Config { font = "xft:Terminus:size=10:bold:antialias=true"
 , fgColor = "grey"  
 , position = TopW L 100
 , commands = [ Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 10  
-  	     , Run Network "eno1" ["-L","0","-H","70","--normal","green","--high","red"] 10   
+  	     , Run Network "wlp2s0" ["-L","0","-H","70","--normal","green","--high","red"] 10
 	     , Run Memory ["-t","Mem: <usedratio>%"] 10
 	     , Run Date "%a %b %_d %l:%M" "date" 10  
 	     , Run Com "/home/alex/scripts/volume.sh" [] "volume" 10
+             , Run Battery [ "--Low"                  , "10"
+                           , "--High"                 , "80"
+                           , "--low"                  , "darkred"
+                           , "--normal"               , "darkorange"
+                           , "--high"                 , "darkgreen"
+                           , "--"
+                           , "-o"       , "<left>% (<timeleft>)"
+                           , "-O"       , "<fc=#dAA520>Charging</fc>"
+                           , "-i"       , "<fc=#006000>Charged</fc>"
+                           ] 50
 	     , Run StdinReader  
 	     ]  
 , sepChar = "%"  
 , alignSep = "}{"  
-, template = " %StdinReader% }{ <fc=grey>%cpu% </fc> <fc=grey> ~ %memory% ~ %eno1%</fc> ~ <fc=#ee9a00>%date%</fc> ~ Vol: <fc=green>%volume%</fc> "  
-}  
+, template = " %StdinReader% }{ <fc=grey>%cpu%</fc><fc=grey> | %memory% | %wlp2s0%</fc> | %battery% | <fc=#ee9a00>%date%</fc> | Vol: <fc=green>%volume%</fc> "  
+}
