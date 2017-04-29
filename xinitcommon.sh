@@ -1,15 +1,17 @@
 # xinitcommon
 
-emacs --daemon &
-xflux -z 98115
+xflux -z 92103
 sh ~/.fehbg
 xsetroot -cursor_name left_ptr
-xcompmgr -c &
 setxkbmap -option ctrl:nocaps
+emacs --daemon
 tilda &
-unclutter &
 PATH=~/bin/:$PATH
-twmnd &
+PATH=~/.cabal/bin/:$PATH
+# twmnd &
 eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
 export SSH_AUTH_SOCK
-exec xmonad
+# startlxde
+# xmonad
+# startlxde
+xmonad
