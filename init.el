@@ -1,5 +1,6 @@
 ;; Set up package manager
 (eval-when-compile
+  (add-to-list 'load-path "~/.emacs.d/site-lisp/use-package/")
   (package-initialize)
   (require 'bind-key)
   (require 'use-package))
