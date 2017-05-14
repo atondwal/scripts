@@ -1,5 +1,8 @@
 ;; Set up package manager
 (eval-when-compile
+  (if (file-exists-p "~/.emacs.d/site-lisp")
+      (shell-command "mkdir -p ~/.emacs.d/site-lisp/")
+      (shell-command "git clone https://github.com/jwiegley/use-package ~/.emacs.d/site-lisp/use-package"))
   (add-to-list 'load-path "~/.emacs.d/site-lisp/use-package/")
   (package-initialize)
   (require 'bind-key)
